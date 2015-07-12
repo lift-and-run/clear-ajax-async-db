@@ -1,0 +1,10 @@
+{
+    "name": "clear-ajax-async-db",
+    "version": "0.0.1",
+    "description": "Pseudo backend with random delays and ajax server",
+    "dependencies": {
+        "connect": ">= 3.4.0",
+        "serve-static": ">= 1.10.0",
+        "cookies": ">= 0.5.0"
+    }
+}
