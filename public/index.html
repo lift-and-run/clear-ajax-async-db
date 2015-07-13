@@ -17,7 +17,8 @@
                 <img src='pictures/game_icon.png  alt=""'>
                 <p>Игры</p>
             </div> -->
-        </div>    
+        </div>
+
         <div class="submenu">
         
         </div>
@@ -26,7 +27,7 @@
             <div class="filter">
                 <!--
                 <input id="refresh" type="button" value="Остановить">
-                 -->
+                -->
                 <p><b>Метод сортировки:</b><Br></p>
                 <p class="sort">
                     <input type="radio" name="sorting" value="origin" checked="checked"> Оригинальный вывод</input><Br>
@@ -35,21 +36,17 @@
                 </p>
             </div><!--
         
-        --></div>
-            <div class="maincontent">
-            <table id='showTable'>
-            </table>
-
+         --><div class="maincontent">
+                <table id="tableList" class="showTable">
+                </table>
+                <p id="warningText" class="off">Потеряна связь с сервером. Пожалуйста, обновите страницу.</p>
             </div>
+        </div>
         
-        <div class="clear">
-
         <div class="footer">
             <span>footer</span>
         </div>
-        </div>
-</div>
-
+    </div>
 
         <script src="javascript/main.js"></script>
         <script src="javascript/ajax.js"></script>

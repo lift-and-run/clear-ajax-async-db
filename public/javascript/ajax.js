@@ -43,7 +43,7 @@ function sendRequestRefresh() {
             //console.log( "requestRefresh");
             if (request.responseText == "listReceived") {
                 stopRequestRefresh();
-                var table = document.getElementById("showTable").childNodes[1];
+                var table = document.getElementById("tableList").childNodes[1];
                 table.removeChild(table.lastElementChild);
             }
             else {
@@ -60,6 +60,14 @@ function sendRequestRefresh() {
                     console.log( "No updates");
                 }
             }
+        }
+        else {
+            if (request.status !== 200) {
+                stopRequestRefresh();
+                document.getElementById("tableList").className = "off";
+                document.getElementById("warningText").className = "warning";
+            }
         }    
     };
 };
+

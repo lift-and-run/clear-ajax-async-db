@@ -15,14 +15,14 @@ TheList.prototype = {
 
     showHead: function () {
         var showText = '<caption>Команды-участники сезона 1999 года</caption><tr><th>Название команды</th></tr><tr><td><img src="pictures/loading.gif" alt=""></td></tr>',
-            showTable = document.getElementById("showTable"); 
-        showTable.innerHTML = showText;
+            tableList = document.getElementById("tableList"); 
+        tableList.innerHTML = showText;
     },
 
     showRow: function (rowText) {
         var tr = document.createElement('tr'),
             td = document.createElement('td'); 
-        var table = document.getElementById("showTable").childNodes[1];
+        var table = document.getElementById("tableList").childNodes[1];
         td.innerHTML = rowText;
         table.insertBefore(tr, table.lastElementChild).appendChild(td);
     },

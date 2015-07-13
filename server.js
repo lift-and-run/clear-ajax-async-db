@@ -1,7 +1,6 @@
 var debug = false;
 
-var fs = require( "fs" ),
-    connect = require( "connect" ),
+var connect = require( "connect" ),
     serverStatic = require('serve-static'),
     Cookies = require( "cookies" ),
     TableGenerator = require( "tableGen" );
@@ -18,10 +17,6 @@ app.use(function(request, response, next) {
 });
 
 app.use(Cookies.express());
-
-app.use( "/favicon", function(request, response) {
-    writeResponsHead(response, "public/pictures/game_icon.png", 'image/png');
-});
 
 app.use(function(request, response, next) {
     if (request.cookies.get("client") === undefined) {
@@ -51,7 +46,6 @@ app.use( "/getItem", function(request, response) {
         response.end("Request has been accepted");
         responseStatus(request, response);
     }
-
     else {
         if (request.cookies.get("client") in receiveListRows) {
             var num = request.url.slice(2);
@@ -69,6 +63,10 @@ app.use( "/getItem", function(request, response) {
                 response.end( JSON.stringify (receiveListRows[request.cookies.get("client")].list.slice(+num)));
                 responseStatus(request, response);
             }
+        } else {
+            response.writeHeader(204, {"Content-Type": "text/plain"}); 
+            response.end("No Content");
+            responseStatus(request, response);
         }
     }
 });
@@ -83,13 +81,6 @@ app.use(function(request, response){
 function responseStatus(request, response) {
     console.log(response.statusCode + "/" + response.statusMessage);
 }
-
-function writeResponsHead(response, responcePath, contentType) {
-    response.writeHead(200, {'Content-type':contentType});
-    responseFile = fs.readFileSync(responcePath);
-    response.end(responseFile);
-    responseStatus(request, response);
-};
 
 app.listen(80);
 console.log('server start');
